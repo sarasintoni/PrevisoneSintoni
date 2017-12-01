@@ -35,14 +35,16 @@
             this.rbSQLite = new System.Windows.Forms.RadioButton();
             this.rbSQLServer = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.clientID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrevisione = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.normalRead = new System.Windows.Forms.RadioButton();
             this.factoryRead = new System.Windows.Forms.RadioButton();
+            this.clientID = new System.Windows.Forms.NumericUpDown();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientID)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -66,7 +68,7 @@
             this.btnRead.Location = new System.Drawing.Point(8, 34);
             this.btnRead.Margin = new System.Windows.Forms.Padding(2);
             this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(108, 23);
+            this.btnRead.Size = new System.Drawing.Size(118, 23);
             this.btnRead.TabIndex = 2;
             this.btnRead.Text = "Read View";
             this.btnRead.UseVisualStyleBackColor = true;
@@ -85,7 +87,7 @@
             // rbSQLServer
             // 
             this.rbSQLServer.AutoSize = true;
-            this.rbSQLServer.Location = new System.Drawing.Point(101, 19);
+            this.rbSQLServer.Location = new System.Drawing.Point(73, 19);
             this.rbSQLServer.Name = "rbSQLServer";
             this.rbSQLServer.Size = new System.Drawing.Size(77, 17);
             this.rbSQLServer.TabIndex = 4;
@@ -99,18 +101,10 @@
             this.groupBox1.Controls.Add(this.rbSQLServer);
             this.groupBox1.Location = new System.Drawing.Point(157, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 46);
+            this.groupBox1.Size = new System.Drawing.Size(162, 46);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DBMS";
-            // 
-            // clientID
-            // 
-            this.clientID.Location = new System.Drawing.Point(65, 8);
-            this.clientID.Name = "clientID";
-            this.clientID.Size = new System.Drawing.Size(51, 20);
-            this.clientID.TabIndex = 6;
-            this.clientID.Text = "1";
             // 
             // label1
             // 
@@ -125,7 +119,7 @@
             // 
             this.btnPrevisione.Location = new System.Drawing.Point(8, 62);
             this.btnPrevisione.Name = "btnPrevisione";
-            this.btnPrevisione.Size = new System.Drawing.Size(108, 23);
+            this.btnPrevisione.Size = new System.Drawing.Size(118, 23);
             this.btnPrevisione.TabIndex = 10;
             this.btnPrevisione.Text = "Previsione dati";
             this.btnPrevisione.UseVisualStyleBackColor = true;
@@ -135,9 +129,9 @@
             // 
             this.groupBox2.Controls.Add(this.normalRead);
             this.groupBox2.Controls.Add(this.factoryRead);
-            this.groupBox2.Location = new System.Drawing.Point(381, 12);
+            this.groupBox2.Location = new System.Drawing.Point(325, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 46);
+            this.groupBox2.Size = new System.Drawing.Size(145, 46);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Read via";
@@ -157,7 +151,7 @@
             // factoryRead
             // 
             this.factoryRead.AutoSize = true;
-            this.factoryRead.Location = new System.Drawing.Point(101, 19);
+            this.factoryRead.Location = new System.Drawing.Point(74, 18);
             this.factoryRead.Name = "factoryRead";
             this.factoryRead.Size = new System.Drawing.Size(60, 17);
             this.factoryRead.TabIndex = 4;
@@ -165,15 +159,38 @@
             this.factoryRead.Text = "Factory";
             this.factoryRead.UseVisualStyleBackColor = true;
             // 
+            // clientID
+            // 
+            this.clientID.Location = new System.Drawing.Point(60, 9);
+            this.clientID.Name = "clientID";
+            this.clientID.Size = new System.Drawing.Size(66, 20);
+            this.clientID.TabIndex = 12;
+            this.clientID.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(522, 12);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 45);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "Clear console";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 360);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.clientID);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnPrevisione);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.clientID);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRead);
             this.Controls.Add(this.txtConsole);
@@ -184,6 +201,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,12 +214,13 @@
         private System.Windows.Forms.RadioButton rbSQLite;
         private System.Windows.Forms.RadioButton rbSQLServer;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox clientID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPrevisione;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton normalRead;
         private System.Windows.Forms.RadioButton factoryRead;
+        private System.Windows.Forms.NumericUpDown clientID;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

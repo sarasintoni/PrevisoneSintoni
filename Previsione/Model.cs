@@ -114,7 +114,7 @@ namespace Previsione
                 FlushText(this, "Leggi i dati prima!!");
             else
             {
-                Sarima s = new Sarima(values);
+                Sarima s = new Sarima(values,6);
                 FlushText(this, "Predict value = " + s.predict());
             }
              

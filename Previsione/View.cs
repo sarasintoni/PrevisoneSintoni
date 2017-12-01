@@ -41,6 +41,16 @@ namespace Previsione
         {
             C.previsione(rbSQLite.Checked, clientID.Text);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtConsole.Clear();
+        }
     }
 
 }
