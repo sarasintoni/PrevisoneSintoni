@@ -14,7 +14,7 @@ namespace Previsione
             this.values = val;
         }
 
-        public int predict()
+        public double predict()
         {
             var ma = new Dictionary<int, double>();
             var cma = new Dictionary<int, double>();
@@ -66,19 +66,30 @@ namespace Previsione
             }*/
 
             List<Double> avgs = new List<double>();
-            avgs.Add((sr.ElementAt(3).Value + sr.ElementAt(9).Value + sr.ElementAt(15).Value + sr.ElementAt(21).Value + sr.ElementAt(27).Value)/5);
-            avgs.Add((sr.ElementAt(4).Value + sr.ElementAt(10).Value + sr.ElementAt(16).Value + sr.ElementAt(22).Value + sr.ElementAt(28).Value)/5);
-            avgs.Add((sr.ElementAt(5).Value + sr.ElementAt(11).Value + sr.ElementAt(17).Value + sr.ElementAt(23).Value)/4);
-            avgs.Add((sr.ElementAt(6).Value + sr.ElementAt(12).Value + sr.ElementAt(18).Value + sr.ElementAt(24).Value + sr.ElementAt(0).Value)/5);
-            avgs.Add((sr.ElementAt(1).Value + sr.ElementAt(7).Value + sr.ElementAt(13).Value + sr.ElementAt(19).Value + sr.ElementAt(25).Value)/5);
-            avgs.Add((sr.ElementAt(2).Value + sr.ElementAt(8).Value + sr.ElementAt(14).Value + sr.ElementAt(20).Value + sr.ElementAt(26).Value)/5);
+            var start = 3;
+            for(int i = 0; i < 6; i++)
+            {
+                Console.WriteLine("Media " + i);
+                int count = 0;
+                double app = 0;
+                for(int v = start; v < sr.Count; v+=6) {
+                    Console.WriteLine("Aggiunto il valore " + v);
+                    app += sr.ElementAt(v).Value;
+                    count++;
+                }
+                avgs.Add(app / count);
+                start++;
+                var news = start % 6;
+                start = news;
+                Console.WriteLine("Nuovo start = " + start);
+            }
 
-            /*Console.WriteLine(avgs[0]);
+            Console.WriteLine(avgs[0]);
             Console.WriteLine(avgs[1]);
             Console.WriteLine(avgs[2]);
             Console.WriteLine(avgs[3]);
             Console.WriteLine(avgs[4]);
-            Console.WriteLine(avgs[5]);*/
+            Console.WriteLine(avgs[5]);
 
 
             for(int i = 0; i < values.Count; i++)
@@ -118,7 +129,7 @@ namespace Previsione
             var prev = trendNew * avgs[(newIndex-1) % 6];
             Console.WriteLine("PREVISIONE = " + prev);
 
-            return 0;
+            return prev;
         }
     }
 }

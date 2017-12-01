@@ -115,7 +115,7 @@ namespace Previsione
             else
             {
                 Sarima s = new Sarima(values);
-                s.predict();
+                FlushText(this, "Predict value = " + s.predict());
             }
              
         }
