@@ -14,7 +14,7 @@ namespace Previsione
             this.stag = s;
         }
 
-        public double predict()
+        public Tuple<int, Double> predict()
         {
             var ma = new Dictionary<int, double>();
             var cma = new Dictionary<int, double>();
@@ -134,7 +134,7 @@ namespace Previsione
             var prev = trendNew * avgs[(newIndex-1) % avgs.Count];
             Console.WriteLine("PREVISIONE = " + prev);
 
-            return prev;
+            return Tuple.Create(newIndex,prev);
         }
     }
 }

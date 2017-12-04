@@ -44,8 +44,8 @@ namespace Previsione
 
                     while (reader.Read()) {
                         int v = Convert.ToInt32(reader["val"]);
-                        FlushText(this, "VAL = " + v.ToString());
                         values.Add(v);
+                        FlushText(this, "t = " + values.Count + ", val = " + v.ToString());
                     }
                 }
 
@@ -91,8 +91,8 @@ namespace Previsione
                         while (reader.Read())
                         {
                             int v = Convert.ToInt32(reader["val"]);
-                            FlushText(this, "VAL = " + v.ToString());
                             values.Add(v);
+                            FlushText(this, "t = " + values.Count + ", val = " + v.ToString());
                         }
                     }
 
@@ -115,7 +115,8 @@ namespace Previsione
             else
             {
                 Sarima s = new Sarima(values,6);
-                FlushText(this, "Predict value = " + s.predict());
+                var prev = s.predict();
+                FlushText(this, "PREDICT VALUE: t = " + prev.Item1 + ", val = " + prev.Item2);
             }
              
         }

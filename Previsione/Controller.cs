@@ -25,17 +25,17 @@ namespace Previsione
 
         public void readView(bool isSQLLite, string idCliente)
         {
-            String s;
+            /*String s;
             if (isSQLLite)
                 s = " con sqlite";
             else
                 s = " NON con sqlite";
-            FlushText(this, "Devo leggere la view " + s);
+            FlushText(this, "Devo leggere la view " + s);*/
 
             String connString;
             if (isSQLLite)
             {
-                connString = ConfigurationManager.ConnectionStrings["SQLiteConn"].ConnectionString;
+                connString = ConfigurationManager.ConnectionStrings["SQLiteConnLab"].ConnectionString;
             }
             else
             {
@@ -48,20 +48,18 @@ namespace Previsione
 
         public void readViaFactory(bool isSQLLite, string idCliente)
         {
-            String s;
+            /*String s;
             if (isSQLLite)
                 s = " con sqlite";
             else
                 s = " NON con sqlite";
-            FlushText(this, "Devo leggere con la factory" + s);
+            FlushText(this, "Devo leggere con la factory" + s);*/
 
             String fact, connString;
-            //dovrà connettersi a DB divesi (lo decide l'utente)
 
-            //@"Data Source=H:\dbGAP.sqlite;Version=3;"; //è molto dipendendente dalla tecnologia
             if (isSQLLite)
             {
-                connString = ConfigurationManager.ConnectionStrings["SQLiteConn"].ConnectionString;
+                connString = ConfigurationManager.ConnectionStrings["SQLiteConnLab"].ConnectionString;
                 fact = "System.Data.SQLite";
             }
             else
@@ -76,12 +74,12 @@ namespace Previsione
 
         public void previsione(bool isSQLLite, string id)
         {
-            String s;
+            /*String s;
             if (isSQLLite)
                 s = " con sqlite";
             else
                 s = " NON con sqlite";
-            FlushText(this, "Prevedi!" + s);
+            FlushText(this, "Prevedi!" + s);*/
 
             M.previsione();
         }
