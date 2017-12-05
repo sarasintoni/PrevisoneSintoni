@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AForge.Math;
+using AForge.Math.Metrics;
 
 namespace Previsione
 {
@@ -14,8 +16,33 @@ namespace Previsione
             this.stag = s;
         }
 
+        private void pearson()
+        {
+            PearsonCorrelation cor = new PearsonCorrelation();
+            int totElem = values.Count - 12;
+            double[] orig = new double[totElem];
+            double[] sfas;
+            for(int i = 0; i < orig.Length; i++)
+            {
+                orig[i] = values[i+12];
+            }
+
+            for(int gap = 1; gap < 13; gap++)
+            {
+                sfas = new double[totElem];
+                for(int i = 0; i < sfas.Length; i++)
+                {
+                    sfas[i] = values[i + 12 - gap];
+                }
+                Console.WriteLine("Pearson con - "+ gap +" = " + cor.GetSimilarityScore(orig, sfas));
+            }
+
+        }
+
         public Tuple<int, Double> predict()
         {
+
+            pearson();
             var ma = new Dictionary<int, double>();
             var cma = new Dictionary<int, double>();
             var sr = new Dictionary<int, double>();
