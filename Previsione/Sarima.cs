@@ -9,16 +9,15 @@ namespace Previsione
     class Sarima 
     {
         private List<int> values;
-        private int stag;
-        public Sarima(List<int> val, int s)
+        public Sarima(List<int> val)
         {
             this.values = val;
-            this.stag = s;
         }
 
-        private void pearson()
+        private List<double> pearson()
         {
             PearsonCorrelation cor = new PearsonCorrelation();
+            List<double> rets = new List<double>();
             int totElem = values.Count - 12;
             double[] orig = new double[totElem];
             double[] sfas;
@@ -34,15 +33,33 @@ namespace Previsione
                 {
                     sfas[i] = values[i + 12 - gap];
                 }
-                Console.WriteLine("Pearson con - "+ gap +" = " + cor.GetSimilarityScore(orig, sfas));
+                double sim = cor.GetSimilarityScore(orig, sfas);
+                rets.Add(sim);
+                Console.WriteLine("Pearson con - "+ gap +" = " + sim);
             }
 
+            return rets;
+
+        }
+
+        private int calcolaStag()
+        {
+            List<double> similarita = pearson();
+            int max = 0;
+            for(int i = 0; i < similarita.Count; i++)
+            {
+                if (similarita[i] > similarita[max])
+                    max = i;
+            }
+            return (max+1);
         }
 
         public Tuple<int, Double> predict()
         {
 
-            pearson();
+
+            int stag = calcolaStag();
+            Console.WriteLine("Stagionalità = " + stag);
             var ma = new Dictionary<int, double>();
             var cma = new Dictionary<int, double>();
             var sr = new Dictionary<int, double>();
