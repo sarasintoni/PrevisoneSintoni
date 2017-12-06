@@ -84,7 +84,7 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="Model.cs" />
-    <Compile Include="Sarima.cs" />
+    <Compile Include="Prediction.cs" />
     <Compile Include="View.cs">
       <SubType>Form</SubType>
     </Compile>

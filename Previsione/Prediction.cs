@@ -6,10 +6,10 @@ using AForge.Math.Metrics;
 
 namespace Previsione
 {
-    class Sarima 
+    class Prediction 
     {
         private List<int> values;
-        public Sarima(List<int> val)
+        public Prediction(List<int> val)
         {
             this.values = val;
         }
@@ -60,6 +60,7 @@ namespace Previsione
 
             int stag = calcolaStag();
             Console.WriteLine("Stagionalità = " + stag);
+
             var ma = new Dictionary<int, double>();
             var cma = new Dictionary<int, double>();
             var sr = new Dictionary<int, double>();
