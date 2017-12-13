@@ -35,7 +35,6 @@ namespace Previsione
                 }
                 double sim = cor.GetSimilarityScore(orig, sfas);
                 rets.Add(sim);
-                Console.WriteLine("Pearson con - "+ gap +" = " + sim);
             }
 
             return rets;
@@ -119,11 +118,11 @@ namespace Previsione
             var start = stag / 2;
             for(int i = 0; i < stag; i++)
             {
-                Console.WriteLine("Media " + i);
+                //Console.WriteLine("Media " + i);
                 int count = 0;
                 double app = 0;
                 for(int v = start; v < sr.Count; v+=stag) {
-                    Console.WriteLine("Aggiunto il valore " + v);
+                    //Console.WriteLine("Aggiunto il valore " + v);
                     app += sr.ElementAt(v).Value;
                     count++;
                 }
@@ -131,7 +130,6 @@ namespace Previsione
                 start++;
                 var news = start % stag;
                 start = news;
-                Console.WriteLine("Nuovo start = " + start);
             }
 
             /*Console.WriteLine(avgs[0]);
@@ -150,10 +148,10 @@ namespace Previsione
             }
 
             var yMedia = dest.Average();
-            Console.WriteLine("Y media = " + yMedia);
+            //Console.WriteLine("Y media = " + yMedia);
 
             var xMedia = (dest.Count+1) / 2;
-            Console.WriteLine("X media = " + xMedia);
+            //Console.WriteLine("X media = " + xMedia);
 
             var sumCodev = 0.0;
             var sumDev = 0.0;
