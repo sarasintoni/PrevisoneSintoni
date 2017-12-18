@@ -41,23 +41,18 @@ namespace Previsione
 
         }
 
-        private int calcolaStag()
+        public Tuple<int, Double> predict()
         {
             List<double> similarita = pearson();
             int max = 0;
-            for(int i = 0; i < similarita.Count; i++)
+            for (int i = 0; i < similarita.Count; i++)
             {
                 if (similarita[i] > similarita[max])
                     max = i;
             }
-            return (max+1);
-        }
-
-        public Tuple<int, Double> predict()
-        {
+            int stag = (max + 1);
 
 
-            int stag = calcolaStag();
             Console.WriteLine("Stagionalità = " + stag);
 
             var ma = new Dictionary<int, double>();
