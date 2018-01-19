@@ -62,6 +62,15 @@ namespace Previsione
             var avgVal = new Dictionary<int, double>();
             var window = new List<double>();
 
+            var detr = 0;
+            if(stag % 2 == 0 )
+            {
+                detr = (stag / 2) - 1;
+            } else
+            {
+                detr = stag / 2;
+            }
+
             for (int i  = 0; i < values.Count; i++)
             {
                 window.Add(values[i]);
@@ -73,7 +82,7 @@ namespace Previsione
                         sum += v;
                     }
                     var avg = sum / stag;
-                    ma.Add((i - (stag/2-1)), avg);
+                    ma.Add((i - detr), avg);
                     //Console.WriteLine(i-2);
                     //Console.WriteLine(avg);
                     window.Remove(window[0]);
@@ -110,7 +119,7 @@ namespace Previsione
             }*/
 
             List<Double> avgs = new List<double>();
-            var start = stag / 2;
+            int start = (int) Math.Ceiling((double) stag / 2);
             for(int i = 0; i < stag; i++)
             {
                 //Console.WriteLine("Media " + i);
@@ -127,26 +136,19 @@ namespace Previsione
                 start = news;
             }
 
-            /*Console.WriteLine(avgs[0]);
-            Console.WriteLine(avgs[1]);
-            Console.WriteLine(avgs[2]);
-            Console.WriteLine(avgs[3]);
-            Console.WriteLine(avgs[4]);
-            Console.WriteLine(avgs[5]);*/
-
 
             for(int i = 0; i < values.Count; i++)
             {
                 int idx = i % avgs.Count;
                 dest.Add(values[i] / avgs[idx]);
-                //Console.WriteLine(dest[i]);
+                Console.WriteLine(values[i] + " / " + avgs[idx] + " = " + dest[i]);
             }
 
             var yMedia = dest.Average();
-            //Console.WriteLine("Y media = " + yMedia);
+            Console.WriteLine("Y media = " + yMedia);
 
             var xMedia = (dest.Count+1) / 2;
-            //Console.WriteLine("X media = " + xMedia);
+            Console.WriteLine("X media = " + xMedia);
 
             var sumCodev = 0.0;
             var sumDev = 0.0;
@@ -156,8 +158,8 @@ namespace Previsione
                 sumDev += Math.Pow(((i + 1) - xMedia), 2);
             }
 
-            //Console.WriteLine("Sum codev = " + sumCodev);
-            //Console.WriteLine("Sum dev = " + sumDev);
+            Console.WriteLine("Sum codev = " + sumCodev);
+            Console.WriteLine("Sum dev = " + sumDev);
             var coeReg = sumCodev / sumDev;
             Console.WriteLine("Coe reg = " + coeReg);
 

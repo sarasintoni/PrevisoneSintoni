@@ -41,12 +41,15 @@ namespace Previsione
                 com.Parameters.Add(param);
                 using (IDataReader reader = com.ExecuteReader())
                 {
-
+                    String s = "";
                     while (reader.Read()) {
                         int v = Convert.ToInt32(reader["val"]);
                         values.Add(v);
-                        FlushText(this, "t = " + values.Count + ", val = " + v.ToString());
+                        s += v + ";";
+                        //FlushText(this, "t = " + values.Count + ", val = " + v.ToString());
+                        FlushText(this, v.ToString());
                     }
+                    FlushText(this, s);
                 }
 
       

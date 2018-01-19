@@ -35,7 +35,7 @@ namespace Previsione
             String connString;
             if (isSQLLite)
             {
-                connString = ConfigurationManager.ConnectionStrings["SQLiteConnLab"].ConnectionString;
+                connString = ConfigurationManager.ConnectionStrings["SQLiteConn"].ConnectionString;
             }
             else
             {
