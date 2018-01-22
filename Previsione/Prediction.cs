@@ -158,8 +158,8 @@ namespace Previsione
                 sumDev += Math.Pow(((i + 1) - xMedia), 2);
             }
 
-            Console.WriteLine("Sum codev = " + sumCodev);
-            Console.WriteLine("Sum dev = " + sumDev);
+            Console.WriteLine("Codev = " + sumCodev);
+            Console.WriteLine("Dev = " + sumDev);
             var coeReg = sumCodev / sumDev;
             Console.WriteLine("Coe reg = " + coeReg);
 
